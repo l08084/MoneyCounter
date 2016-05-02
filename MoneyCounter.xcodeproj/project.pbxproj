@@ -17,6 +17,7 @@
 		B0731A7A1CD7250A0047BDA3 /* MoneyCounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0731A791CD725090047BDA3 /* MoneyCounterUITests.swift */; };
 		B0731A881CD733DA0047BDA3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0731A871CD733DA0047BDA3 /* ListViewController.swift */; };
 		B0731A8A1CD75F810047BDA3 /* Spend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0731A891CD75F810047BDA3 /* Spend.swift */; };
+		B0731A8C1CD77CAA0047BDA3 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0731A8B1CD77CAA0047BDA3 /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		B0731A7B1CD7250A0047BDA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0731A871CD733DA0047BDA3 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		B0731A891CD75F810047BDA3 /* Spend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spend.swift; sourceTree = "<group>"; };
+		B0731A8B1CD77CAA0047BDA3 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				B0731A651CD725090047BDA3 /* Info.plist */,
 				B0731A871CD733DA0047BDA3 /* ListViewController.swift */,
 				B0731A891CD75F810047BDA3 /* Spend.swift */,
+				B0731A8B1CD77CAA0047BDA3 /* Repository.swift */,
 			);
 			path = MoneyCounter;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			files = (
 				B0731A8A1CD75F810047BDA3 /* Spend.swift in Sources */,
 				B0731A5C1CD725090047BDA3 /* ViewController.swift in Sources */,
+				B0731A8C1CD77CAA0047BDA3 /* Repository.swift in Sources */,
 				B0731A881CD733DA0047BDA3 /* ListViewController.swift in Sources */,
 				B0731A5A1CD725090047BDA3 /* AppDelegate.swift in Sources */,
 			);

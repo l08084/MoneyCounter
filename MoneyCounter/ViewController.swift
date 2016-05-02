@@ -12,9 +12,14 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var moneyTextField: UITextField!
     
+    // DBアクセスクラスをインスタンス化
+    var repo: Repository = Repository()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        repo = Repository()
     }
 
     override func didReceiveMemoryWarning() {
