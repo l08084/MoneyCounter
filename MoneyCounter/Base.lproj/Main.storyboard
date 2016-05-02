@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F3G-QC-dup">
-                                <rect key="frame" x="252" y="200" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F3G-QC-dup">
+                                <rect key="frame" x="252" y="200" width="142" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="97" id="X6m-7W-meO"/>
                                 </constraints>
@@ -32,13 +32,30 @@
                                     <segue destination="im4-Ap-Ma5" kind="showDetail" id="oKt-Dv-Rcf"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="金額" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeE-SP-SRg">
+                                <rect key="frame" x="207" y="204" width="37" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37" id="9Jh-Fa-7pl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydL-6p-DHM">
+                                <rect key="frame" x="257" y="369" width="86" height="30"/>
+                                <state key="normal" title="金額入力"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="F3G-QC-dup" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="74c-td-2SY"/>
                             <constraint firstItem="F3G-QC-dup" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="180" id="CsZ-XX-ncS"/>
+                            <constraint firstItem="LeE-SP-SRg" firstAttribute="centerY" secondItem="F3G-QC-dup" secondAttribute="centerY" id="Rmc-9c-m1Y"/>
+                            <constraint firstItem="ydL-6p-DHM" firstAttribute="leading" secondItem="fmP-Rd-tZr" secondAttribute="leading" id="ax3-9a-cNd"/>
                             <constraint firstItem="fmP-Rd-tZr" firstAttribute="top" secondItem="F3G-QC-dup" secondAttribute="bottom" constant="89" id="d4m-eD-7Lk"/>
                             <constraint firstItem="fmP-Rd-tZr" firstAttribute="centerX" secondItem="F3G-QC-dup" secondAttribute="centerX" id="oha-iy-QoY"/>
+                            <constraint firstItem="F3G-QC-dup" firstAttribute="leading" secondItem="LeE-SP-SRg" secondAttribute="trailing" constant="16" id="rFU-vx-yc8"/>
+                            <constraint firstItem="ydL-6p-DHM" firstAttribute="top" secondItem="fmP-Rd-tZr" secondAttribute="bottom" constant="20" id="vI4-FX-ry5"/>
                         </constraints>
                     </view>
                     <connections>

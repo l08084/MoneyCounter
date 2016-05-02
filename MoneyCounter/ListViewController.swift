@@ -13,7 +13,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var myTableView: UITableView!
     private var myButton = UIButton()
     
-    private var alartTimes: [String] = []
+    private var moneyList: [String] = ["Test1", "Test2"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         myButton.layer.masksToBounds = true
         myButton.layer.cornerRadius = 30.0
         myButton.layer.position = CGPointMake(self.view.frame.width/2, self.view.frame.height-100)
-        myButton.addTarget(self, action: "onClickMyButton:", forControlEvents: .TouchUpInside)
+        myButton.addTarget(self, action: #selector(ListViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
         
         // ボタンを追加する.
         self.view.addSubview(myButton)
@@ -69,7 +69,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
      */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        performSegueWithIdentifier("beforeView", sender: nil)
+        performSegueWithIdentifier("goMoneyInput", sender: nil)
     }
     
     /*
@@ -77,7 +77,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
      (実装必須)
      */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return alartTimes.count
+        return moneyList.count
     }
     
     /*
@@ -90,13 +90,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         
         // Cellに値を設定する.
-        cell.textLabel!.text = "\(alartTimes[indexPath.row])"
-        
-        // Switchを作成する
-        let mySwitch: UISwitch = UISwitch()
-        
-        // cellの右端にSwitchをレイアウト
-        cell.accessoryView = mySwitch
+        cell.textLabel!.text = "\(moneyList[indexPath.row])"
         
         return cell
         }
