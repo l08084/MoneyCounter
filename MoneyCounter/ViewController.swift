@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         
         repo = Repository()
         
-        let sum = sumSpendMoney()
+        let sum = sumSpendMoneyInMonth()
         print("金額合計:\(sum)")
         sumLabel.text = String(sum)
     }
@@ -62,6 +62,30 @@ class ViewController: UIViewController {
         
         for spend in spends {
             spendMoneys.append(spend.spendMoney)
+        }
+        // 消費金額の合計を返却
+        return spendMoneys.reduce(0, combine: { $0 + $1 })
+    }
+    
+    func sumSpendMoneyInMonth() -> Int {
+        
+        let spends = repo.findSpendList()
+        
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        
+        var equalMonth = true
+        
+        for spend in spends {
+            
+            // 今月の支出の場合はtrue
+            equalMonth = calendar.isDate(spend.spdendDate, equalToDate: NSDate(), toUnitGranularity: .NSMonthCalendarUnit)
+            
+            print(spend.spdendDate)
+            print(equalMonth)
+            // 今月分の支出のみ集計
+            if equalMonth {
+                spendMoneys.append(spend.spendMoney)
+            }
         }
         // 消費金額の合計を返却
         return spendMoneys.reduce(0, combine: { $0 + $1 })
