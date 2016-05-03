@@ -24,7 +24,11 @@ class ViewController: UIViewController {
         spend.currency = "YEN"
         spend.location = "Tokyo"
         spend.memo = "タリーズ"
-        spend.spendMoney = Int(moneyTextField.text!)!
+        
+        // 金額入力欄が空欄の場合、金額を代入しない
+        if !((moneyTextField.text?.isEmpty)!) {
+            spend.spendMoney = Int(moneyTextField.text!)!
+        }
         
         repo.saveSpend(spend)
     }
