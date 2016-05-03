@@ -38,4 +38,11 @@ public class Repository {
         
         return maxId
     }
+    
+    func findSpendList() -> Results<Spend> {
+        
+        let spends = realm.objects(Spend)
+        
+        return spends
+    }
 }

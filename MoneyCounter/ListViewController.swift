@@ -13,7 +13,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var myTableView: UITableView!
     private var myButton = UIButton()
     
-    private var moneyList: [String] = ["Test1", "Test2"]
+    private var moneyList: [Int] = []
+    
+    var repo: Repository = Repository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +53,14 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // ボタンを追加する.
         self.view.addSubview(myButton)
+        
+        repo = Repository()
+        
+        let spends = repo.findSpendList()
+        
+        for spend in spends {
+            moneyList.append(spend.spendMoney)
+        }
     }
     
     /*
