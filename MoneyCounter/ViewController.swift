@@ -11,6 +11,11 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var moneyTextField: UITextField!
+    @IBOutlet weak var sumLabel: UILabel!
+    
+    var spendMoneys: [Int] = []
+    
+    /// 金額保存ボタン押下後に呼び出し
     @IBAction func saveSpend(sender: AnyObject) {
         print("金額入力:¥\(moneyTextField.text!)")
         
@@ -41,13 +46,26 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         repo = Repository()
+        
+        let sum = sumSpendMoney()
+        print("金額合計:\(sum)")
+        sumLabel.text = String(sum)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func sumSpendMoney() -> Int {
+        let spends = repo.findSpendList()
+        
+        for spend in spends {
+            spendMoneys.append(spend.spendMoney)
+        }
+        // 消費金額の合計を返却
+        return spendMoneys.reduce(0, combine: { $0 + $1 })
+    }
 
 }
 
