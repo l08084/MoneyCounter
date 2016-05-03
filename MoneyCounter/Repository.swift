@@ -23,4 +23,19 @@ public class Repository {
         // Realmファイルが現在配置されている場所を表示
         print("realm:\(realm.path)")
     }
+    
+    func saveSpend(spend: Spend) {
+        
+        try! realm.write {
+            
+            self.realm.add(spend, update: true)
+        }
+    }
+    
+    func findMaxId() -> Int {
+        
+        let maxId = realm.objects(Spend).sorted("id").last?.id ?? 0
+        
+        return maxId
+    }
 }

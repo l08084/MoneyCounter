@@ -11,6 +11,23 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var moneyTextField: UITextField!
+    @IBAction func saveSpend(sender: AnyObject) {
+        print("金額入力:¥\(moneyTextField.text!)")
+        
+        // 既存IDの最大値を取得
+        let maxId = repo.findMaxId()
+        
+        let spend = Spend()
+        
+        // 既存データのID最大値+1
+        spend.id = maxId + 1
+        spend.currency = "YEN"
+        spend.location = "Tokyo"
+        spend.memo = "タリーズ"
+        spend.spendMoney = Int(moneyTextField.text!)!
+        
+        repo.saveSpend(spend)
+    }
     
     // DBアクセスクラスをインスタンス化
     var repo: Repository = Repository()
