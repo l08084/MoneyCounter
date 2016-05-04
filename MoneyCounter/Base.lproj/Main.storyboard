@@ -26,8 +26,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmP-Rd-tZr">
-                                <rect key="frame" x="252" y="319" width="102" height="30"/>
-                                <state key="normal" title="今月の支出"/>
+                                <rect key="frame" x="231" y="319" width="139" height="30"/>
+                                <state key="normal" title="最近の支出"/>
                                 <connections>
                                     <segue destination="im4-Ap-Ma5" kind="showDetail" id="oKt-Dv-Rcf"/>
                                 </connections>
@@ -64,8 +64,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvj-Xs-4KP">
-                                <rect key="frame" x="285" y="415" width="30" height="30"/>
-                                <state key="normal" title="履歴"/>
+                                <rect key="frame" x="257" y="415" width="86" height="30"/>
+                                <state key="normal" title="履歴(月)"/>
                                 <connections>
                                     <segue destination="583-So-tfq" kind="showDetail" id="hdk-kd-gQ9"/>
                                 </connections>
