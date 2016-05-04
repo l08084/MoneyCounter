@@ -66,6 +66,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvj-Xs-4KP">
                                 <rect key="frame" x="285" y="415" width="30" height="30"/>
                                 <state key="normal" title="履歴"/>
+                                <connections>
+                                    <segue destination="583-So-tfq" kind="showDetail" id="hdk-kd-gQ9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -95,7 +98,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="574" y="349"/>
+            <point key="canvasLocation" x="74" y="351"/>
+        </scene>
+        <!--Month History View Controller-->
+        <scene sceneID="nde-uJ-iCO">
+            <objects>
+                <viewController id="583-So-tfq" customClass="MonthHistoryViewController" customModule="MoneyCounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AVi-lU-BUQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="QH1-eJ-gEj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oft-rp-geu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="HistoryToMain" id="0b1-Vo-tre"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qvz-XA-BSg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="846" y="1080"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="K46-wn-u0z">
@@ -119,4 +143,7 @@
             <point key="canvasLocation" x="1386" y="373"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0b1-Vo-tre"/>
+    </inferredMetricsTieBreakers>
 </document>
