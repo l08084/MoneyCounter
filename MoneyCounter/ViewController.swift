@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         
         let sum = sumSpendMoneyInMonth()
         print("金額合計:\(sum)")
-        sumLabel.text = String(sum)
+        sumLabel.text = "\(sum)円"
     }
 
     override func didReceiveMemoryWarning() {

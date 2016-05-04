@@ -16,6 +16,8 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
     private var moneyList: [String] = ["1月", "2月", "3月","4月", "5月", "6月",
                                        "7月", "8月", "9月", "10月", "11月", "12月"]
     
+    private var moneyMonth: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    
     var repo: Repository = Repository()
     
     override func viewDidLoad() {
@@ -28,7 +30,7 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
         
         myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
         
-        // Cell名の登録をおこなう.
+        // Cell名の登録をおこなう
         myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         
         // DataSourceの設定をする.
@@ -54,15 +56,50 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
         
         // ボタンを追加する.
         self.view.addSubview(myButton)
-        /*
+        
         repo = Repository()
         
         let spends = repo.findSpendList()
         
+        // NSCalendarインスタンス
+        let cal = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        
+        var month: Int = 0
+        
         for spend in spends {
-            moneyList.append(spend.spendMoney)
+            month = cal.component(.Month, fromDate: spend.spdendDate)
+            print("月:\(month)")
+            
+            switch month {
+            case 1:
+                moneyMonth[1] += spend.spendMoney
+            case 2:
+                moneyMonth[2] += spend.spendMoney
+            case 3:
+                moneyMonth[3] += spend.spendMoney
+            case 4:
+                moneyMonth[4] += spend.spendMoney
+            case 5:
+                moneyMonth[5] += spend.spendMoney
+            case 6:
+                moneyMonth[6] += spend.spendMoney
+            case 7:
+                moneyMonth[7] += spend.spendMoney
+            case 8:
+                moneyMonth[8] += spend.spendMoney
+            case 9:
+                moneyMonth[9] += spend.spendMoney
+            case 10:
+                moneyMonth[10] += spend.spendMoney
+            case 11:
+                moneyMonth[11] += spend.spendMoney
+            case 12:
+                moneyMonth[12] += spend.spendMoney
+            default: break
+                
+            }
         }
- */
+ 
     }
     
     /*
@@ -103,7 +140,7 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         
         // Cellに値を設定する.
-        cell.textLabel!.text = "\(moneyList[indexPath.row])"
+        cell.textLabel!.text = "\(moneyList[indexPath.row]):\(moneyMonth[indexPath.row])円"
         
         return cell
     }
