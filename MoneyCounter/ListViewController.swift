@@ -101,7 +101,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         
         // Cellに値を設定する.
-        cell.textLabel!.text = "\(moneyList[indexPath.row])"
+        cell.textLabel!.text = "\(moneyList[indexPath.row])円"
         
         return cell
         }
