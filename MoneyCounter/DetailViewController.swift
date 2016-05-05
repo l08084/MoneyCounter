@@ -1,20 +1,22 @@
 //
-//  listViewController.swift
+//  DetailViewController.swift
 //  MoneyCounter
 //
-//  Created by 中安拓也 on 2016/05/02.
+//  Created by 中安拓也 on 2016/05/05.
 //  Copyright © 2016年 l08084. All rights reserved.
 //
 
 import UIKit
-import Foundation
 
-class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private var myTableView: UITableView!
     private var myButton = UIButton()
     
-    private var moneyList: [Int] = []
+    private var moneyList: [String] = ["1月", "2月", "3月","4月", "5月", "6月",
+                                       "7月", "8月", "9月", "10月", "11月", "12月"]
+    
+    private var moneyMonth: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     
     var repo: Repository = Repository()
     
@@ -28,7 +30,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
         
-        // Cell名の登録をおこなう.
+        // Cell名の登録をおこなう
         myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         
         // DataSourceの設定をする.
@@ -55,32 +57,26 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // ボタンを追加する.
         self.view.addSubview(myButton)
         
-        repo = Repository()
-        
-        let spends = repo.findSpendList()
-        
-        for spend in spends {
-            moneyList.append(spend.spendMoney)
-        }
     }
     
     /*
      ボタンのアクション時に設定したメソッド.
      */
     internal func onClickMyButton(sender: UIButton){
-        performSegueWithIdentifier("goMoneyInput", sender: nil)
+        performSegueWithIdentifier("detailToList", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    
     /*
      Cellが選択された際に呼び出されるデリゲートメソッド.
      */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        performSegueWithIdentifier("listToDetail", sender: nil)
+        performSegueWithIdentifier("detailToList", sender: nil)
     }
     
     /*
@@ -101,9 +97,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         
         // Cellに値を設定する.
-        cell.textLabel!.text = "\(moneyList[indexPath.row])円"
+        cell.textLabel!.text = "\(moneyList[indexPath.row]):\(moneyMonth[indexPath.row])円"
         
         return cell
-        }
-    
     }
+    
+}
