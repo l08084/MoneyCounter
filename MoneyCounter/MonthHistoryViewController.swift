@@ -71,29 +71,29 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
             
             switch month {
             case 1:
-                moneyMonth[1] += spend.spendMoney
+                moneyMonth[0] += spend.spendMoney
             case 2:
-                moneyMonth[2] += spend.spendMoney
+                moneyMonth[1] += spend.spendMoney
             case 3:
-                moneyMonth[3] += spend.spendMoney
+                moneyMonth[2] += spend.spendMoney
             case 4:
-                moneyMonth[4] += spend.spendMoney
+                moneyMonth[3] += spend.spendMoney
             case 5:
-                moneyMonth[5] += spend.spendMoney
+                moneyMonth[4] += spend.spendMoney
             case 6:
-                moneyMonth[6] += spend.spendMoney
+                moneyMonth[5] += spend.spendMoney
             case 7:
-                moneyMonth[7] += spend.spendMoney
+                moneyMonth[6] += spend.spendMoney
             case 8:
-                moneyMonth[8] += spend.spendMoney
+                moneyMonth[7] += spend.spendMoney
             case 9:
-                moneyMonth[9] += spend.spendMoney
+                moneyMonth[8] += spend.spendMoney
             case 10:
-                moneyMonth[10] += spend.spendMoney
+                moneyMonth[9] += spend.spendMoney
             case 11:
-                moneyMonth[11] += spend.spendMoney
+                moneyMonth[10] += spend.spendMoney
             case 12:
-                moneyMonth[12] += spend.spendMoney
+                moneyMonth[11] += spend.spendMoney
             default: break
                 
             }
