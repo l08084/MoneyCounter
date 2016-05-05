@@ -17,7 +17,20 @@ class ViewController: UIViewController {
     
     /// 金額保存ボタン押下後に呼び出し
     @IBAction func saveSpend(sender: AnyObject) {
-        print("金額入力:¥\(moneyTextField.text!)")
+        
+        var inputTextField: UITextField?
+        
+        let alertController = UIAlertController(title: "メモ", message: "支出の用途について記入してください", preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "記録する", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        alertController.addTextFieldWithConfigurationHandler { textField -> Void in
+            inputTextField = textField
+            textField.placeholder = "メモ"
+        }
+        
+        presentViewController(alertController, animated: true, completion: nil)
         
         // 既存IDの最大値を取得
         let maxId = repo.findMaxId()
@@ -28,7 +41,7 @@ class ViewController: UIViewController {
         spend.id = maxId + 1
         spend.currency = "YEN"
         spend.location = "Tokyo"
-        spend.memo = "タリーズ"
+        spend.memo = (inputTextField?.text)!
         
         // 金額入力欄が空欄の場合、金額を代入しない
         if !((moneyTextField.text?.isEmpty)!) {
@@ -48,7 +61,6 @@ class ViewController: UIViewController {
         repo = Repository()
         
         let sum = sumSpendMoneyInMonth()
-        print("金額合計:\(sum)")
         sumLabel.text = "\(sum)円"
     }
 
@@ -80,8 +92,6 @@ class ViewController: UIViewController {
             // 今月の支出の場合はtrue
             equalMonth = calendar.isDate(spend.spdendDate, equalToDate: NSDate(), toUnitGranularity: .NSMonthCalendarUnit)
             
-            print(spend.spdendDate)
-            print(equalMonth)
             // 今月分の支出のみ集計
             if equalMonth {
                 spendMoneys.append(spend.spendMoney)

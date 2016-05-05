@@ -68,7 +68,6 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
         
         for spend in spends {
             month = cal.component(.Month, fromDate: spend.spdendDate)
-            print("月:\(month)")
             
             switch month {
             case 1:
