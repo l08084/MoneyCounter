@@ -16,6 +16,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private var moneyList: [Int] = []
     
+    private var spendIdList: [Int] = []
+    
     var repo: Repository = Repository()
     
     override func viewDidLoad() {
@@ -61,6 +63,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         for spend in spends {
             moneyList.append(spend.spendMoney)
+            spendIdList.append(spend.id)
         }
     }
     
@@ -79,6 +82,10 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
      Cellが選択された際に呼び出されるデリゲートメソッド.
      */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        appDelegate.selectSpendId = spendIdList[indexPath.row]
         
         performSegueWithIdentifier("listToDetail", sender: nil)
     }
@@ -105,5 +112,5 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
         }
-    
+        
     }

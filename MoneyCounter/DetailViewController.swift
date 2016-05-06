@@ -20,6 +20,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     var repo: Repository = Repository()
     
+    var selectSpendId = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,6 +59,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         // ボタンを追加する.
         self.view.addSubview(myButton)
         
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        var spendId = appDelegate.selectSpendId
+        print("selectSpendId:\(spendId)")
     }
     
     /*

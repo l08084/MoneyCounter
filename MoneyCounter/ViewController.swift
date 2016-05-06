@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //
+    // 使用した金額を入力するテキストフィールド
     @IBOutlet weak var moneyTextField: UITextField!
     
     // 今月の支出合計を表示するラベル
