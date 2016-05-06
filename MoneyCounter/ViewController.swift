@@ -88,15 +88,19 @@ class ViewController: UIViewController {
         
         let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
         
+        var equalYear = true
         var equalMonth = true
         
         for spend in spends {
+            
+            // 今年の支出の場合はtrue
+            equalYear = calendar.isDate(spend.spendDate, equalToDate:  NSDate(), toUnitGranularity: .NSYearCalendarUnit)
             
             // 今月の支出の場合はtrue
             equalMonth = calendar.isDate(spend.spendDate, equalToDate: NSDate(), toUnitGranularity: .NSMonthCalendarUnit)
             
             // 今月分の支出のみ集計
-            if equalMonth {
+            if equalYear && equalMonth {
                 spendMoneys.append(spend.spendMoney)
             }
         }
