@@ -49,4 +49,11 @@ public class Repository {
         return spends
     }
     
+    func findSpendById(id: Int) -> Spend {
+        
+        let results = realm.objects(Spend).filter("id = %@", id)
+        
+        return results[0]
+    }
+    
 }

@@ -13,10 +13,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     private var myTableView: UITableView!
     private var myButton = UIButton()
     
-    private var moneyList: [String] = ["1月", "2月", "3月","4月", "5月", "6月",
-                                       "7月", "8月", "9月", "10月", "11月", "12月"]
-    
-    private var moneyMonth: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    private var spendInfo: [String] = []
     
     var repo: Repository = Repository()
     
@@ -59,9 +56,20 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         // ボタンを追加する.
         self.view.addSubview(myButton)
         
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        var spendId = appDelegate.selectSpendId
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let spendId = appDelegate.selectSpendId
         print("selectSpendId:\(spendId)")
+        
+        var selectSpend = repo.findSpendById(spendId!)
+        
+        let format = NSDateFormatter()
+        
+        format.dateFormat = "yyyy/MM/dd HH:mm"
+        
+        spendInfo.append("\(selectSpend.spendMoney)円")
+        spendInfo.append("\(format.stringFromDate(selectSpend.spendDate))")
+        spendInfo.append(selectSpend.location)
+        spendInfo.append("メモ:\(selectSpend.memo)")
     }
     
     /*
@@ -89,7 +97,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
      (実装必須)
      */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return moneyList.count
+        return spendInfo.count
     }
     
     /*
@@ -102,7 +110,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         
         // Cellに値を設定する.
-        cell.textLabel!.text = "\(moneyList[indexPath.row]):\(moneyMonth[indexPath.row])円"
+        cell.textLabel!.text = "\(spendInfo[indexPath.row])"
         
         return cell
     }
