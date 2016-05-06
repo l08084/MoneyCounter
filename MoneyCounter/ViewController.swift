@@ -9,8 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    //
     @IBOutlet weak var moneyTextField: UITextField!
+    
+    // 今月の支出合計を表示するラベル
     @IBOutlet weak var sumLabel: UILabel!
     
     var spendMoneys: [Int] = []
@@ -33,7 +36,7 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
         
         // 既存IDの最大値を取得
-        let maxId = repo.findMaxId()
+        let maxId = repo.findMaxIdInSpend()
         
         let spend = Spend()
         
@@ -90,7 +93,7 @@ class ViewController: UIViewController {
         for spend in spends {
             
             // 今月の支出の場合はtrue
-            equalMonth = calendar.isDate(spend.spdendDate, equalToDate: NSDate(), toUnitGranularity: .NSMonthCalendarUnit)
+            equalMonth = calendar.isDate(spend.spendDate, equalToDate: NSDate(), toUnitGranularity: .NSMonthCalendarUnit)
             
             // 今月分の支出のみ集計
             if equalMonth {

@@ -24,6 +24,7 @@ public class Repository {
         print("realm:\(realm.path)")
     }
     
+    /// spendモデルの保存
     func saveSpend(spend: Spend) {
         
         try! realm.write {
@@ -32,13 +33,15 @@ public class Repository {
         }
     }
     
-    func findMaxId() -> Int {
+    /// Spendモデルの最大IDを取得
+    func findMaxIdInSpend() -> Int {
         
         let maxId = realm.objects(Spend).sorted("id").last?.id ?? 0
         
         return maxId
     }
     
+    /// Spendを全件取得
     func findSpendList() -> Results<Spend> {
         
         let spends = realm.objects(Spend)
