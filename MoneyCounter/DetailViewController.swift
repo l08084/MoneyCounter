@@ -68,8 +68,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         spendInfo.append("\(selectSpend.spendMoney)円")
         spendInfo.append("\(format.stringFromDate(selectSpend.spendDate))")
-        spendInfo.append(selectSpend.location)
-        spendInfo.append("メモ:\(selectSpend.memo)")
+        spendInfo.append("\(selectSpend.memo)")
     }
     
     /*

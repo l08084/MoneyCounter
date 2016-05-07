@@ -38,8 +38,6 @@ class ViewController: UIViewController {
                     
                     // 既存データのID最大値+1
                     spend.id = maxId + 1
-                    spend.currency = "YEN"
-                    spend.location = "Tokyo"
                     
                     spend.memo = textField.text!
                      self.repo.saveSpend(spend)

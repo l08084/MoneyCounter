@@ -13,9 +13,7 @@ class Spend: Object {
     
     dynamic var id = 0
     dynamic var spendMoney = 0
-    dynamic var currency = ""
     dynamic var spendDate = NSDate()
-    dynamic var location = ""
     dynamic var memo = ""
     
     override static func primaryKey() -> String? {
