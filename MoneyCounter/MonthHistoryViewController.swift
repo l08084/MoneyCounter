@@ -124,10 +124,7 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
     /*
      Cellが選択された際に呼び出されるデリゲートメソッド.
      */
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // 金額入力画面に戻る
-        performSegueWithIdentifier("HistoryToMain", sender: nil)
-    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {}
     
     /*
      Cellの総数を返すデータソースメソッド.

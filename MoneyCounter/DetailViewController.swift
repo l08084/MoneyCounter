@@ -87,10 +87,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     /*
      Cellが選択された際に呼び出されるデリゲートメソッド.
      */
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        performSegueWithIdentifier("detailToList", sender: nil)
-    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {}
     
     /*
      Cellの総数を返すデータソースメソッド.
