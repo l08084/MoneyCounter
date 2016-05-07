@@ -32,10 +32,10 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         // Cell名の登録をおこなう
         myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         
-        // DataSourceの設定をする.
+        // DataSourceの設定をする
         myTableView.dataSource = self
         
-        // Delegateを設定する.
+        // Delegateを設定する
         myTableView.delegate = self
         
         // Viewに追加する
@@ -43,7 +43,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         myButton = UIButton()
         
-        // ボタンを生成する.
+        // ボタンを生成する
         myButton.frame = CGRectMake(0, 0, 60, 60)
         myButton.backgroundColor = UIColor.redColor()
         myButton.setTitle("Back", forState: .Normal)
@@ -82,7 +82,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
     
     /*
      Cellが選択された際に呼び出されるデリゲートメソッド.

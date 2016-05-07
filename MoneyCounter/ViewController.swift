@@ -25,7 +25,32 @@ class ViewController: UIViewController {
         
         let alertController = UIAlertController(title: "メモ", message: "支出の用途について記入してください", preferredStyle: .Alert)
         
-        let defaultAction = UIAlertAction(title: "記録する", style: .Default, handler: nil)
+        // 既存IDの最大値を取得
+        let maxId = repo.findMaxIdInSpend()
+        
+        let spend = Spend()
+        
+        let defaultAction = UIAlertAction(title: "記録する", style: .Default, handler: {
+            (action: UIAlertAction!) -> Void in
+            let textFields: Array<UITextField>? = alertController.textFields as Array<UITextField>?
+            if textFields != nil {
+                for textField: UITextField in textFields! {
+                    
+                    // 既存データのID最大値+1
+                    spend.id = maxId + 1
+                    spend.currency = "YEN"
+                    spend.location = "Tokyo"
+                    
+                    spend.memo = textField.text!
+                     self.repo.saveSpend(spend)
+                    
+                    // 金額TextFieldを空にする234
+                    self.moneyTextField!.text = ""
+                }
+            }
+        })
+        
+        // 記録するのアクションを追加する
         alertController.addAction(defaultAction)
         
         alertController.addTextFieldWithConfigurationHandler { textField -> Void in
@@ -33,25 +58,14 @@ class ViewController: UIViewController {
             textField.placeholder = "メモ"
         }
         
+        // UIAlertを発動する
         presentViewController(alertController, animated: true, completion: nil)
-        
-        // 既存IDの最大値を取得
-        let maxId = repo.findMaxIdInSpend()
-        
-        let spend = Spend()
-        
-        // 既存データのID最大値+1
-        spend.id = maxId + 1
-        spend.currency = "YEN"
-        spend.location = "Tokyo"
-        spend.memo = (inputTextField?.text)!
         
         // 金額入力欄が空欄の場合、金額を代入しない
         if !((moneyTextField.text?.isEmpty)!) {
             spend.spendMoney = Int(moneyTextField.text!)!
         }
-        
-        repo.saveSpend(spend)
+
     }
     
     // DBアクセスクラスをインスタンス化
