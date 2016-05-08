@@ -2,7 +2,7 @@
 //  Spend.swift
 //  MoneyCounter
 //
-//  Created by 中安拓也 on 2016/05/02.
+//  Created by l08084 on 2016/05/02.
 //  Copyright © 2016年 l08084. All rights reserved.
 //
 

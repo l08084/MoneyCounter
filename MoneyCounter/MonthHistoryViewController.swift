@@ -2,7 +2,7 @@
 //  MonthHistoryViewController.swift
 //  MoneyCounter
 //
-//  Created by 中安拓也 on 2016/05/04.
+//  Created by l08084 on 2016/05/04.
 //  Copyright © 2016年 l08084. All rights reserved.
 //
 
@@ -108,9 +108,8 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
  
     }
     
-    /*
-     ボタンのアクション時に設定したメソッド.
-     */
+    
+    /// 戻るボタンのアクション時に設定したメソッド
     internal func onClickbackButton(sender: UIButton){
         // 金額入力画面に戻る
         performSegueWithIdentifier("HistoryToMain", sender: nil)
@@ -121,23 +120,17 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
     }
  
     
-    /*
-     Cellが選択された際に呼び出されるデリゲートメソッド.
-     */
+    /// Cellが選択された際に呼び出されるデリゲートメソッド
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {}
     
-    /*
-     Cellの総数を返すデータソースメソッド.
-     (実装必須)
-     */
+    
+    /// Cellの総数を返すデータソースメソッド
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return monthText.count
     }
     
-    /*
-     Cellに値を設定するデータソースメソッド.
-     (実装必須)
-     */
+    
+    /// Cellに値を設定するデータソースメソッド
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // 再利用するCellを取得する.

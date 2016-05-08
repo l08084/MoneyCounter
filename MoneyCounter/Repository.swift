@@ -2,7 +2,7 @@
 //  Repository.swift
 //  MoneyCounter
 //
-//  Created by 中安拓也 on 2016/05/02.
+//  Created by l08084 on 2016/05/02.
 //  Copyright © 2016年 l08084. All rights reserved.
 //
 
@@ -49,6 +49,7 @@ public class Repository {
         return spends
     }
     
+    /// idをキーにspendを1件取得
     func findSpendById(id: Int) -> Spend {
         
         let results = realm.objects(Spend).filter("id = %@", id)

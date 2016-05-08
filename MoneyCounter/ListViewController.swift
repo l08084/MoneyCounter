@@ -2,7 +2,7 @@
 //  listViewController.swift
 //  MoneyCounter
 //
-//  Created by 中安拓也 on 2016/05/02.
+//  Created by l08084 on 2016/05/02.
 //  Copyright © 2016年 l08084. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ import Foundation
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private var myTableView: UITableView!
-    private var myButton = UIButton()
+    private var backButton = UIButton()
     
     private var moneyList: [Int] = []
     
@@ -42,20 +42,19 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Viewに追加する
         self.view.addSubview(myTableView)
         
-        myButton = UIButton()
+        // 戻るボタンを生成する
+        backButton = UIButton()
+        backButton.frame = CGRectMake(0, 0, 60, 60)
+        backButton.backgroundColor = UIColor.redColor()
+        backButton.setTitle("Back", forState: .Normal)
+        backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        backButton.layer.masksToBounds = true
+        backButton.layer.cornerRadius = 30.0
+        backButton.layer.position = CGPointMake(self.view.frame.width/2, self.view.frame.height-100)
+        backButton.addTarget(self, action: #selector(ListViewController.onClickbackButton(_:)), forControlEvents: .TouchUpInside)
         
-        // ボタンを生成する.
-        myButton.frame = CGRectMake(0, 0, 60, 60)
-        myButton.backgroundColor = UIColor.redColor()
-        myButton.setTitle("Back", forState: .Normal)
-        myButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        myButton.layer.masksToBounds = true
-        myButton.layer.cornerRadius = 30.0
-        myButton.layer.position = CGPointMake(self.view.frame.width/2, self.view.frame.height-100)
-        myButton.addTarget(self, action: #selector(ListViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
-        
-        // ボタンを追加する.
-        self.view.addSubview(myButton)
+        // 戻るボタンを追加する.
+        self.view.addSubview(backButton)
         
         repo = Repository()
         
@@ -67,10 +66,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    /*
-     ボタンのアクション時に設定したメソッド.
-     */
-    internal func onClickMyButton(sender: UIButton){
+    
+    /// 戻るボタンのアクション時に設定したメソッド
+    internal func onClickbackButton(sender: UIButton){
         performSegueWithIdentifier("goMoneyInput", sender: nil)
     }
     
@@ -78,30 +76,25 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.didReceiveMemoryWarning()
     }
     
-    /*
-     Cellが選択された際に呼び出されるデリゲートメソッド.
-     */
+    /// Cellが選択された際に呼び出されるデリゲートメソッド.
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        // AppDelegateを定義
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
+        // 選択したspendのIDをAppDelegateに渡す
         appDelegate.selectSpendId = spendIdList[indexPath.row]
         
         performSegueWithIdentifier("listToDetail", sender: nil)
     }
     
-    /*
-     Cellの総数を返すデータソースメソッド.
-     (実装必須)
-     */
+    
+    /// Cellの総数を返すデータソースメソッド
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moneyList.count
     }
     
-    /*
-     Cellに値を設定するデータソースメソッド.
-     (実装必須)
-     */
+    /// Cellに値を設定するデータソースメソッド
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // 再利用するCellを取得する.

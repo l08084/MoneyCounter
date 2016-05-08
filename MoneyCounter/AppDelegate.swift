@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  MoneyCounter
 //
-//  Created by 中安拓也 on 2016/05/02.
+//  Created by l08084 on 2016/05/02.
 //  Copyright © 2016年 l08084. All rights reserved.
 //
 
@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    // 選択したspendのidを格納する(支出詳細画面に渡すのが目的)
     var selectSpendId: Int?
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

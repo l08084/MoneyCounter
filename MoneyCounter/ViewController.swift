@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  MoneyCounter
 //
-//  Created by 中安拓也 on 2016/05/02.
+//  Created by l08084 on 2016/05/02.
 //  Copyright © 2016年 l08084. All rights reserved.
 //
 
@@ -23,9 +23,10 @@ class ViewController: UIViewController {
         
         var inputTextField: UITextField?
         
+        // 支出メモ入力アラートを定義
         let alertController = UIAlertController(title: "メモ", message: "支出の用途について記入してください", preferredStyle: .Alert)
         
-        // 既存IDの最大値を取得
+        // Spendの既存ID最大値を取得
         let maxId = repo.findMaxIdInSpend()
         
         let spend = Spend()
@@ -40,8 +41,11 @@ class ViewController: UIViewController {
                     // 既存データのID最大値+1
                     spend.id = maxId + 1
                     
+                    // アラートからメモを取得
                     spend.memo = textField.text!
-                     self.repo.saveSpend(spend)
+                    
+                    // DBにspendを保存
+                    self.repo.saveSpend(spend)
                     
                     // 金額TextFieldを空にする
                     self.moneyTextField!.text = ""
@@ -68,6 +72,7 @@ class ViewController: UIViewController {
         // キャンセルボタンのアクションを追加する
         alertController.addAction(cancelAction)
         
+        // アラートにtextFieldを追加
         alertController.addTextFieldWithConfigurationHandler { textField -> Void in
             inputTextField = textField
             textField.placeholder = "メモ"
@@ -92,6 +97,7 @@ class ViewController: UIViewController {
         
         repo = Repository()
         
+        // 今月の合計金額を算出する
         let sum = sumSpendMoneyInMonth()
         sumLabel.text = "\(sum)円"
     }
@@ -101,16 +107,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func sumSpendMoney() -> Int {
-        let spends = repo.findSpendList()
-        
-        for spend in spends {
-            spendMoneys.append(spend.spendMoney)
-        }
-        // 消費金額の合計を返却
-        return spendMoneys.reduce(0, combine: { $0 + $1 })
-    }
-    
+    /// 今月の支出金額を集計する
     func sumSpendMoneyInMonth() -> Int {
         
         let spends = repo.findSpendList()
