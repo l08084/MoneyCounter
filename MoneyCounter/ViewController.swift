@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         
         let spend = Spend()
         
+        // '記録する'のアクションを定義する
         let defaultAction = UIAlertAction(title: "記録する", style: .Default, handler: {
             (action: UIAlertAction!) -> Void in
             let textFields: Array<UITextField>? = alertController.textFields as Array<UITextField>?
@@ -42,14 +43,30 @@ class ViewController: UIViewController {
                     spend.memo = textField.text!
                      self.repo.saveSpend(spend)
                     
-                    // 金額TextFieldを空にする234
+                    // 金額TextFieldを空にする
                     self.moneyTextField!.text = ""
                 }
             }
         })
         
-        // 記録するのアクションを追加する
+        // キャンセルボタンのアクションを定義する
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
+            (action: UIAlertAction!) -> Void in
+            let textFields: Array<UITextField>? = alertController.textFields as Array<UITextField>?
+            if textFields != nil {
+                for textField: UITextField in textFields! {
+                    
+                    // 金額TextFieldを空にする
+                    self.moneyTextField!.text = ""
+                }
+            }
+        })
+        
+        // '記録する'のアクションを追加する
         alertController.addAction(defaultAction)
+        
+        // キャンセルボタンのアクションを追加する
+        alertController.addAction(cancelAction)
         
         alertController.addTextFieldWithConfigurationHandler { textField -> Void in
             inputTextField = textField
