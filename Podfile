@@ -5,6 +5,7 @@ use_frameworks!
 
 target 'MoneyCounter' do
 	pod 'RealmSwift'
+    pod 'Charts/Realm'
 end
 
 target 'MoneyCounterTests' do
