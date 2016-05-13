@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import Charts
 
-class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MonthHistoryViewController: UIViewController {
     
+    @IBOutlet var horizontalBarChartView: HorizontalBarChartView!
+    
+    var months: [String]!
+    /*
     // 各月支出額合計を表示するTableView
     private var monthSumTableView: UITableView!
     
@@ -21,13 +26,24 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
                                        "7月", "8月", "9月", "10月", "11月", "12月"]
     // 各月支出額合計
     private var sumMonth: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    
+    */
     // DBアクセサクラスのインスタンス化
     var repo: Repository = Repository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        months = ["1月", "2月", "3月","4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+        let unitsSold = [50.3, 68.3, 113.3, 115.7, 160.8, 214.0, 220.4, 132.1, 176.2, 120.9, 71.3, 48.0]
+        
+        horizontalBarChartView.animate(yAxisDuration: 2.0)
+        horizontalBarChartView.pinchZoomEnabled = false
+        horizontalBarChartView.drawBarShadowEnabled = false
+        horizontalBarChartView.drawBordersEnabled = true
+        horizontalBarChartView.descriptionText = "京都府の月毎の降水量グラフ"
+        
+        setChart(months, values: unitsSold)
+        /*
         let barHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
         
         let displayWidth: CGFloat = self.view.frame.width
@@ -105,15 +121,16 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
                 
             }
         }
- 
+ */
     }
     
     
     /// 戻るボタンのアクション時に設定したメソッド
-    internal func onClickbackButton(sender: UIButton){
+    /*internal func onClickbackButton(sender: UIButton){
         // 金額入力画面に戻る
         performSegueWithIdentifier("HistoryToMain", sender: nil)
     }
+ */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -121,8 +138,9 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
  
     
     /// Cellが選択された際に呼び出されるデリゲートメソッド
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {}
+    //func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {}
     
+    /*
     
     /// Cellの総数を返すデータソースメソッド
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -140,6 +158,22 @@ class MonthHistoryViewController: UIViewController, UITableViewDataSource, UITab
         cell.textLabel!.text = "\(monthText[indexPath.row]):\(sumMonth[indexPath.row])円"
         
         return cell
+    }
+    */
+    
+    func setChart(dataPoints: [String], values: [Double]) {
+        horizontalBarChartView.noDataText = "You need to provide data for the chart."
+        
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        
+        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "降水量")
+        let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
+        horizontalBarChartView.data = chartData
     }
     
 }

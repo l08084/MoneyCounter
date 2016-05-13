@@ -38,7 +38,7 @@
                                     <constraint firstAttribute="width" constant="37" id="9Jh-Fa-7pl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydL-6p-DHM">
@@ -51,7 +51,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UG1-NT-7PY">
                                 <rect key="frame" x="252" y="141" width="142" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="今月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QA2-zu-o3o">
@@ -60,7 +60,7 @@
                                     <constraint firstAttribute="width" constant="37" id="gFw-kc-ZjH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvj-Xs-4KP">
@@ -108,18 +108,19 @@
                         <viewControllerLayoutGuide type="top" id="AVi-lU-BUQ"/>
                         <viewControllerLayoutGuide type="bottom" id="QH1-eJ-gEj"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="oft-rp-geu">
+                    <view key="view" contentMode="scaleToFill" id="oft-rp-geu" customClass="HorizontalBarChartView" customModule="Charts">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="horizontalBarChartView" destination="oft-rp-geu" id="uiC-bY-Zfn"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="HistoryToMain" id="0b1-Vo-tre"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qvz-XA-BSg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="262" y="1164"/>
+            <point key="canvasLocation" x="193" y="1040"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="K46-wn-u0z">
@@ -166,7 +167,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="0b1-Vo-tre"/>
         <segue reference="8TO-yQ-yF0"/>
-        <segue reference="tdZ-Zr-j3n"/>
     </inferredMetricsTieBreakers>
 </document>
