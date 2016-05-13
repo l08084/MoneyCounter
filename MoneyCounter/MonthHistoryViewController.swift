@@ -14,13 +14,11 @@ class MonthHistoryViewController: UIViewController {
     @IBOutlet var horizontalBarChartView: HorizontalBarChartView!
     
     var months: [String]!
-    /*
-    // 各月支出額合計を表示するTableView
-    private var monthSumTableView: UITableView!
+    
     
     // 前画面に戻るボタン
     private var backButton = UIButton()
-    
+    /*
     // 各月のテキスト
     private var monthText: [String] = ["1月", "2月", "3月","4月", "5月", "6月",
                                        "7月", "8月", "9月", "10月", "11月", "12月"]
@@ -42,27 +40,6 @@ class MonthHistoryViewController: UIViewController {
         horizontalBarChartView.drawBordersEnabled = true
         horizontalBarChartView.descriptionText = "京都府の月毎の降水量グラフ"
         
-        setChart(months, values: unitsSold)
-        /*
-        let barHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
-        
-        let displayWidth: CGFloat = self.view.frame.width
-        let displayHeight: CGFloat = self.view.frame.height
-        
-        monthSumTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
-        
-        // Cell名の登録をおこなう
-        monthSumTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-        
-        // DataSourceの設定をする.
-        monthSumTableView.dataSource = self
-        
-        // Delegateを設定する.
-        monthSumTableView.delegate = self
-        
-        // Viewに追加する
-        self.view.addSubview(monthSumTableView)
-        
         // 戻るボタンのインスタンス化
         backButton = UIButton()
         
@@ -78,6 +55,12 @@ class MonthHistoryViewController: UIViewController {
         
         // 戻るボタンを追加する.
         self.view.addSubview(backButton)
+        
+        setChart(months, values: unitsSold)
+        /*
+        
+        
+        
         
         // spendを全件取得する
         let spends = repo.findSpendList()
@@ -126,11 +109,11 @@ class MonthHistoryViewController: UIViewController {
     
     
     /// 戻るボタンのアクション時に設定したメソッド
-    /*internal func onClickbackButton(sender: UIButton){
+    internal func onClickbackButton(sender: UIButton){
         // 金額入力画面に戻る
         performSegueWithIdentifier("HistoryToMain", sender: nil)
     }
- */
+ 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
