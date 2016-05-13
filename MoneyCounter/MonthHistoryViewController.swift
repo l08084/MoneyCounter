@@ -15,30 +15,26 @@ class MonthHistoryViewController: UIViewController {
     
     var months: [String]!
     
-    
     // 前画面に戻るボタン
     private var backButton = UIButton()
-    /*
-    // 各月のテキスト
-    private var monthText: [String] = ["1月", "2月", "3月","4月", "5月", "6月",
-                                       "7月", "8月", "9月", "10月", "11月", "12月"]
-    // 各月支出額合計
-    private var sumMonth: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    */
+    
     // DBアクセサクラスのインスタンス化
     var repo: Repository = Repository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        months = ["1月", "2月", "3月","4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
-        let unitsSold = [50.3, 68.3, 113.3, 115.7, 160.8, 214.0, 220.4, 132.1, 176.2, 120.9, 71.3, 48.0]
+        // 各月のテキスト
+        months = ["3月", "2月", "1月", "12月", "11月", "10月", "9月", "8月", "7月", "6月", "5月", "4月"]
+        
+        // 各月支出額合計
+        var sumMonth: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         
         horizontalBarChartView.animate(yAxisDuration: 2.0)
         horizontalBarChartView.pinchZoomEnabled = false
         horizontalBarChartView.drawBarShadowEnabled = false
         horizontalBarChartView.drawBordersEnabled = true
-        horizontalBarChartView.descriptionText = "京都府の月毎の降水量グラフ"
+        horizontalBarChartView.descriptionText = "月毎の支出量グラフ"
         
         // 戻るボタンのインスタンス化
         backButton = UIButton()
@@ -55,12 +51,6 @@ class MonthHistoryViewController: UIViewController {
         
         // 戻るボタンを追加する.
         self.view.addSubview(backButton)
-        
-        setChart(months, values: unitsSold)
-        /*
-        
-        
-        
         
         // spendを全件取得する
         let spends = repo.findSpendList()
@@ -104,7 +94,7 @@ class MonthHistoryViewController: UIViewController {
                 
             }
         }
- */
+        setChart(months, values: sumMonth)
     }
     
     
@@ -118,43 +108,19 @@ class MonthHistoryViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
- 
     
-    /// Cellが選択された際に呼び出されるデリゲートメソッド
-    //func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {}
-    
-    /*
-    
-    /// Cellの総数を返すデータソースメソッド
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return monthText.count
-    }
-    
-    
-    /// Cellに値を設定するデータソースメソッド
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        // 再利用するCellを取得する.
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
-        
-        // 月ごとの支出の合計を表示する
-        cell.textLabel!.text = "\(monthText[indexPath.row]):\(sumMonth[indexPath.row])円"
-        
-        return cell
-    }
-    */
-    
-    func setChart(dataPoints: [String], values: [Double]) {
+    func setChart(dataPoints: [String], values: [Int]) {
         horizontalBarChartView.noDataText = "You need to provide data for the chart."
         
         var dataEntries: [BarChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            let dataEntry = BarChartDataEntry(value: Double(values[i]), xIndex: i)
+            
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "降水量")
+        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "支出額(円)")
         let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
         horizontalBarChartView.data = chartData
     }
