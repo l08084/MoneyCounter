@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     
     var spendMoneys: [Int] = []
     
+    var sum = 0
+    
     /// 金額保存ボタン押下後に呼び出し
     @IBAction func saveSpend(sender: AnyObject) {
         
@@ -49,6 +51,11 @@ class ViewController: UIViewController {
                     
                     // 金額TextFieldを空にする
                     self.moneyTextField!.text = ""
+                    
+                    // 今月の合計金額を算出する
+                    self.spendMoneys = []
+                    self.sum = self.sumSpendMoneyInMonth()
+                    self.sumLabel.text = "\(self.sum)円"
                 }
             }
         })
@@ -98,7 +105,8 @@ class ViewController: UIViewController {
         repo = Repository()
         
         // 今月の合計金額を算出する
-        let sum = sumSpendMoneyInMonth()
+        spendMoneys = []
+        sum = sumSpendMoneyInMonth()
         sumLabel.text = "\(sum)円"
     }
 
